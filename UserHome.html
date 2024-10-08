@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resource Saver Pro - Your Home</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+    <!-- Replace the FontAwesome script with this CDN link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Firebase initialization script here -->
+</head>
+<body>
+    <div class="user-home-container">
+        <header class="user-home-header">
+            <h1 class="gradient-text">Resource Saver Pro</h1>
+            <button id="logoutButton" class="btn btn-logout">
+                <i class="fas fa-sign-out-alt"></i> Logout
+            </button>
+        </header>
+        <main class="user-home-content">
+            <div class="grid-container">
+                <section class="stats-section">
+                    <div class="stat-card gradient-bg">
+                        <i class="fas fa-bookmark"></i>
+                        <h3>Resources Saved</h3>
+                        <p id="resourceCount">0</p>
+                    </div>
+                    <div class="stat-card gradient-bg">
+                        <i class="fas fa-star"></i>
+                        <h3>Favorited Resources</h3>
+                        <p id="favoriteCount">0</p>
+                    </div>
+                    <div class="stat-card gradient-bg">
+                        <i class="fas fa-folder"></i>
+                        <h3>Collections</h3>
+                        <p id="collectionCount">0</p>
+                    </div>
+                </section>
+                <section class="recent-activity-section">
+                    <h2 class="section-title">Recent Activity</h2>
+                    <div class="activity-list">
+                        <h3>Latest Saved Resources</h3>
+                        <ul id="recentResources"></ul>
+                    </div>
+                </section>
+                <section class="categories-section">
+                    <h2 class="section-title">Top Categories</h2>
+                    <ul id="topCategories"></ul>
+                </section>
+            </div>
+            <div class="button-container">
+                <a href="#" id="viewResourceBank" class="btn btn-primary gradient-bg">View Your Resource Bank</a>
+            </div>
+        </main>
+    </div>
+    <script src="userHome.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+    <script>
+        // Initialize Firebase here if not already done in userHome.js
+        // const firebaseConfig = { ... };
+        // firebase.initializeApp(firebaseConfig);
+    </script>
+</body>
+</html>
