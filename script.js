@@ -323,19 +323,22 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // After successful login
   function onSuccessfulAuth(user) {
-    if (chrome && chrome.runtime && chrome.runtime.sendMessage) {
-      chrome.runtime.sendMessage(
-        'fcemcgjjommnhebhhckgikgglhjndnoh',
-        { action: "setAuthState", isAuthenticated: true },
-        function(response) {
-          if (chrome.runtime.lastError) {
-            console.error('Error sending message:', chrome.runtime.lastError);
-          } else {
-            console.log("Auth state updated in extension", response);
+    setTimeout(() => {
+      if (chrome && chrome.runtime && chrome.runtime.sendMessage) {
+        chrome.runtime.sendMessage(
+          'fcemcgjjommnhebhhckgikgglhjndnoh',
+          { action: "setAuthState", isAuthenticated: true },
+          function(response) {
+            if (chrome.runtime.lastError) {
+              console.error('Error sending message:', chrome.runtime.lastError);
+            } else {
+              console.log("Auth state updated in extension", response);
+            }
           }
-        }
-      );
-    }
+        );
+      }
+    }, 1000); // 1 second delay
+
     // Redirect to UserHome.html or perform other actions
     window.location.href = 'UserHome.html';
   }
