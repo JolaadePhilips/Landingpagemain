@@ -323,29 +323,23 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // After successful login
   function onSuccessfulAuth(user) {
-    console.log('User logged in:', user.uid);
-
-    // Get the user's ID token
-    user.getIdToken(/* forceRefresh */ true)
-      .then(function(idToken) {
-        // Send the ID token to the extension
+    setTimeout(() => {
+      if (chrome && chrome.runtime && chrome.runtime.sendMessage) {
         chrome.runtime.sendMessage(
-          'fcemcgjjommnhebhhckgikgglhjndnoh', // Replace with your actual extension ID
-          { action: 'passIDToken', idToken: idToken },
+          'fcemcgjjommnhebhhckgikgglhjndnoh',
+          { action: "setAuthState", isAuthenticated: true },
           function(response) {
             if (chrome.runtime.lastError) {
-              console.error('Error sending message to extension:', chrome.runtime.lastError);
+              console.error('Error sending message:', chrome.runtime.lastError);
             } else {
-              console.log('Extension response:', response);
+              console.log("Auth state updated in extension", response);
             }
           }
         );
-      })
-      .catch(function(error) {
-        console.error('Error getting ID token:', error);
-      });
+      }
+    }, 1000); // 1 second delay
 
-    // Redirect or other actions
+    // Redirect to UserHome.html or perform other actions
     window.location.href = 'UserHome.html';
   }
 
